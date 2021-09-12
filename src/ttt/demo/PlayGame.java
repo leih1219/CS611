@@ -243,6 +243,8 @@ public class PlayGame {
                 return 'O';
             } else if (xWins) {
                 return 'X';
+            } else if (totalStep == 9){
+                return '=';
             }
             //no winners yet
             //continue then
