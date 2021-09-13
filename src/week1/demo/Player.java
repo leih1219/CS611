@@ -12,15 +12,17 @@ public class Player {
 
     public void moveChess(Board board){
         Scanner sc;
-        sc = new Scanner(System.in);
-        int userInput = 0;
+
+        int userInput;
         while(true){
 
             try {
+                sc = new Scanner(System.in);
                 userInput = sc.nextInt();
             }
             catch (InputMismatchException exception){
                 System.out.println("Error - Enter a integer");
+                continue;
             }
 
 
@@ -30,10 +32,12 @@ public class Player {
                 continue;
             }
 
-            boolean isValid = Fuctions.validPosition(userInput,board); //judge whether current position is occupied
-            if(isValid){
-                board.getBoard()[(userInput-1)/3][(userInput-1)%3] = chessPiece;
+            boolean isValid = Functions.validPosition(userInput,board); //judge whether current position is occupied
+            if (isValid) {
+                board.getBoard()[(userInput - 1) / 3][(userInput - 1) % 3] = chessPiece;
                 return;
+            } else {
+                System.out.println("This position is occupied, please choose another one!");
             }
         }
     }
