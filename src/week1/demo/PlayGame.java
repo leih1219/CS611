@@ -1,7 +1,5 @@
 package week1.demo;
 
-import java.util.Locale;
-import java.util.Map;
 import java.util.Scanner;
 
 public class PlayGame {

@@ -1,11 +1,6 @@
 package week1.demo;
 
-import jdk.jfr.Frequency;
-
-import javax.print.DocFlavor;
-
 import static week1.demo.PlayGame.gameBoard;
-import static week1.demo.PlayGame.showInitialBoard;
 
 public class Board {
     private int row;
