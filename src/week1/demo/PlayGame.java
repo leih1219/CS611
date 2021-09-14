@@ -23,8 +23,6 @@ public class PlayGame {
             //play the game
             while (true){
 
-                board.showBoard();
-
                 String currentPlayer;
                 if ((gameStep % 2 == 1 && isOTheFirst) || (gameStep % 2 == 0 && !isOTheFirst)){
                     currentPlayer = "O";
@@ -39,6 +37,10 @@ public class PlayGame {
                 } else {
                     playerX.moveChess(board);
                 }
+
+                //show the board after each move
+                board.showBoard();
+
                 result = board.stepResult();
                 if (result != 'C') {
                     break;  //if result shows "continue" then continue
@@ -46,11 +48,22 @@ public class PlayGame {
                 gameStep++;
 
             }
+            //get the steps to win
+            int oSteps, xSteps;
+            if (isOTheFirst) {
+                oSteps = gameStep/2 + gameStep%2;
+                xSteps = gameStep/2;
+            } else {
+                xSteps = gameStep/2 + gameStep%2;
+                oSteps = gameStep/2;
+            }
+
+
             if (result == playerO.getChessPiece()) {        //Player O wins!
-                System.out.println("Congrats Player O, YOU WIN!");
+                System.out.println("Congrats Player O! You win in " + oSteps + " steps!");
                 oWinTimes++;
             } else if (result == playerX.getChessPiece()) { //Player X wins!
-                System.out.println("Congrats Player X, YOU WIN!");
+                System.out.println("Congrats Player X, You win in " + xSteps + " steps!");
                 xWinTimes++;
             } else {                                        //Stalemate
                 System.out.println("Stalemate!!");
@@ -67,6 +80,7 @@ public class PlayGame {
                 gameStep = 1;
             } else {
                 System.out.println("Player O wins: " + oWinTimes + "!\n" + "Player X wins: " + xWinTimes + "!");
+                System.out.println("Goodbye!");
                 return;
             }
 
